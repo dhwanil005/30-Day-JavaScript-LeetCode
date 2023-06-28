@@ -1,17 +1,12 @@
 var expect = function(val) {
     return {
-        x : val,
-        notToBe : function(key){
-            if (this.x === key) {
-                throw new Error("Equal");
-            }
-            return true;
+        toBe: (val2) => {
+            if (val !== val2) throw new Error("Not Equal");
+            else return true;
         },
-        toBe : function(key){
-            if (this.x !== key) {
-                throw new Error("Not Equal");
-            }
-            return true;
+        notToBe: (val2) => {
+            if (val === val2) throw new Error("Equal");
+            else return true;
         }
     }
 };
